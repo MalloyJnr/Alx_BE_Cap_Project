@@ -1,14 +1,19 @@
-# ChurchFund API
+# Church Contribution Management System (Backend API)
 
-ChurchFund API is a Django REST Framework–based backend system for managing
-church members and their financial contributions, including church dues,
-welfare contributions, and offerings.
+## Project Overview
+This is a backend REST API built with Django and Django REST Framework for managing church members and their financial contributions, including dues, welfare, and offerings.
 
-## Features Implemented (Part 3 Progress)
+The system allows authenticated users to:
+- Manage church members
+- Record different types of contributions
+- View contribution summaries per member
+
+## Features
 - Token-based authentication
 - Member management (CRUD)
-- Contribution management (CRUD)
-- Secure API access using authentication
+- Contribution tracking (Dues, Welfare, Offering)
+- Automatic contribution summaries per member
+- Secure, authenticated API endpoints
 
 ## Tech Stack
 - Python
@@ -16,10 +21,15 @@ welfare contributions, and offerings.
 - Django REST Framework
 - SQLite (development)
 
-## Project Structure
-- accounts: Authentication logic
-- members: Church member management
-- contributions: Contribution records
+## API Endpoints (Sample)
+- POST `/api/auth/login/`
+- GET / POST `/api/members/`
+- GET / POST `/api/contributions/`
+
+## Authentication
+This API uses token-based authentication.
+Include the token in request headers:
+
 
 ## Setup Instructions
 1. Clone the repository
