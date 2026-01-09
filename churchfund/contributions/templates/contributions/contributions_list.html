@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Church Contributions</title>
+</head>
+<body>
+
+    <h1>Church Contributions</h1>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Member</th>
+            <th>Type</th>
+            <th>Amount (₵)</th>
+            <th>Date</th>
+        </tr>
+
+        {% for contribution in contributions %}
+        <tr>
+            <td>{{ contribution.member.full_name }}</td>
+            <td>{{ contribution.contribution_type|title }}</td>
+            <td>₵{{ contribution.amount }}</td>
+            <td>{{ contribution.date }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No contributions yet.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/dashboard/">Dashboard</a>
+    <a href="/contributions/totals/">Contribution totals</a>
+</body>
+</html>

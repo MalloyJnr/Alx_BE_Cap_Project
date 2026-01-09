@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Member</title>
+</head>
+<body>
+    <h1>Add Church Member</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label>Full Name</label><br>
+        <input type="text" name="full_name" required><br><br>
+
+        <label>Phone</label><br>
+        <input type="text" name="phone"><br><br>
+
+        <label>Email</label><br>
+        <input type="email" name="email"><br><br>
+
+        <button type="submit">Save Member</button>
+    </form>
+
+    <br>
+    <a href="/members/">Back to Members</a>
+</body>
+</html>

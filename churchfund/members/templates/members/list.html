@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Members</title>
+</head>
+<body>
+    <h1>Church Members</h1>
+
+    <a href="/members/create/">Add New Member</a>
+    <hr>
+
+    <ul>
+        {% for member in members %}
+            <li>
+                {{ member.full_name }} |
+                {{ member.phone }} |
+                {{ member.email }}
+            </li>
+        {% empty %}
+            <li>No members found.</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <a href="/dashboard/">Back to Dashboard</a>
+</body>
+</html>

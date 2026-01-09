@@ -22,4 +22,8 @@ urlpatterns = [
     path('api/auth/login/', include('accounts.urls')),
     path('api/', include('members.urls')),
     path('api/', include('contributions.urls')),
+    path('dashboard/', include('dashboard.urls')),
+    #frontend routes
+    path('', include('members.urls')),  
+    path('', include('contributions.urls')),
 ]

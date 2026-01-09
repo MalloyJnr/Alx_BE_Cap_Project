@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contribution Totals</title>
+</head>
+<body>
+    <h1>Contribution Totals by Type</h1>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Type</th>
+            <th>Total (₵)</th>
+        </tr>
+
+        {% for item in totals %}
+        <tr>
+            <td>{{ item.contribution_type|title }}</td>
+            <td>₵{{ item.total }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/contributions/"> contributions List</a>
+
+</body>
+</html>
