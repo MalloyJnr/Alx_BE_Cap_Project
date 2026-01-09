@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Contribution</title>
+</head>
+<body>
+
+<h1>Add Contribution</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label>Member:</label><br>
+    <select name="member" required>
+        <option value="">-- Select Member --</option>
+        {% for member in members %}
+        <option value="{{ member.id }}">{{ member.full_name }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+
+    <label>Contribution Type:</label><br>
+    <select name="contribution_type" required>
+        <option value="">-- Select Type --</option>
+        <option value="dues">Church Dues</option>
+        <option value="welfare">Welfare</option>
+        <option value="offering">Offering</option>
+    </select>
+    <br><br>
+
+    <label>Amount (₵):</label><br>
+    <input type="number" step="0.01" name="amount" required>
+    <br><br>
+
+    <label>Remarks:</label><br>
+    <textarea name="remarks"></textarea>
+    <br><br>
+
+    <button type="submit">Save Contribution</button>
+</form>
+
+<br><a href="/dashboard/">Dashboard</a>
+</body>
+</html>

@@ -1,10 +1,12 @@
 from rest_framework import viewsets, permissions
-from .models import Contribution
+from .models import Contribution, Member
 from .serializers import ContributionSerializer
 from django.db.models import Sum
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.utils.timezone import now
+
 
 class ContributionViewSet(viewsets.ModelViewSet):
     queryset = Contribution.objects.all().order_by("-date")
@@ -61,4 +63,27 @@ def contributions_list(request):
 
     return render(request, "contributions/contributions_list.html", {
         "contributions": contributions
+    })
+
+def create_contribution(request):
+    members = Member.objects.all()
+
+    if request.method == "POST":
+        member_id = request.POST.get("member")
+        amount = request.POST.get("amount")
+        contribution_type = request.POST.get("contribution_type")
+        remarks = request.POST.get("remarks")
+
+        Contribution.objects.create(
+            member_id=member_id,
+            amount=amount,
+            contribution_type=contribution_type,
+            date=now().date(),
+            remarks=remarks,
+        )
+
+        return redirect("contributions-list")
+
+    return render(request, "contributions/create_contribution.html", {
+        "members": members
     })
